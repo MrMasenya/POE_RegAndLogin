@@ -13,7 +13,7 @@ import java.util.Scanner;
 class Login {
     private String storedUsername;
     private String storedPassword;
-
+    private boolean isLoggedIn;
 
    public void setStoredCredentials(String username, String password) {
         storedUsername = username;
@@ -97,5 +97,10 @@ class Login {
         System.out.println("Enter last name:");
         return scanner.nextLine();
     }
+   public void setLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;}     
+
+    public boolean isLoggedIn() {
+    return isLoggedIn;}
 }
 

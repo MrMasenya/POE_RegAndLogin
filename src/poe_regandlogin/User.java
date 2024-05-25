@@ -6,7 +6,7 @@ package poe_regandlogin;
 
 /**
  *
- * @author RC_Student_lab
+ * @author Mmakwena Masenya
  */
 class User {
     private String username;

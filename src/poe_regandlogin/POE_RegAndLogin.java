@@ -15,7 +15,7 @@ public class POE_RegAndLogin {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Login login = new Login();
-
+        TaskManager taskManager = new TaskManager();
 
        System.out.println("Welcome to Rosebank College Registration System!");
         System.out.println("1. Create an account");
@@ -45,6 +45,7 @@ public class POE_RegAndLogin {
                 if (loginStatus) {
                     User user = new User(username, password, firstName, lastName);
                     System.out.println(login.returnLoginStatus(true, user));
+                    login.setLoggedIn(true);
                 } else {
                     System.out.println(login.returnLoginStatus(false, null));
                 }
@@ -78,6 +79,7 @@ public class POE_RegAndLogin {
                     if (loginStatus) {
                         User user = new User(username, password, firstName, lastName);
                         System.out.println(login.returnLoginStatus(true, user));
+                        login.setLoggedIn(true);
                     } else {
                         System.out.println(login.returnLoginStatus(false, null));
                     }
@@ -89,8 +91,7 @@ public class POE_RegAndLogin {
                     String enteredPassword = login.promptPassword(scanner);
                     loginStatus = login.loginUser(enteredUsername, enteredPassword);
                     if (loginStatus) {
-                        User user = new User(username, password, "Mmakwena", "Masenya"); 
-                        System.out.println(login.returnLoginStatus(true, user));
+                        login.setLoggedIn(true);
                     } else {
                         System.out.println(login.returnLoginStatus(false, null));
                     }
@@ -100,7 +101,9 @@ public class POE_RegAndLogin {
             System.out.println("Invalid choice.");
         }
 
-
+        if (login.isLoggedIn()) {
+            taskManager.runTaskManager(scanner);
+        } 
        scanner.close();
     }
 }
